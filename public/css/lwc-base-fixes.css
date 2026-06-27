@@ -1,0 +1,9 @@
+/*
+ * Lightning Base Components — Platform Parity Fixes
+ * Patches differences between the npm lightning-base-components and the real platform.
+ */
+
+.slds-card__body {
+  padding-left: var(--slds-c-card-body-spacing-inline-start, 1rem);
+  padding-right: var(--slds-c-card-body-spacing-inline-end, 1rem);
+}

@@ -1,0 +1,46 @@
+{
+  "name": "dex-storybook-next",
+  "private": true,
+  "version": "1.0.0",
+  "description": "LWC component workbench — Storybook 10 catalog + runnable app shell, with SLDS Plus, WES, and DS2 Cosmos themes",
+  "type": "module",
+  "scripts": {
+    "prebuild-icons": "node scripts/prebuild-icons.mjs",
+    "dev": "node scripts/prebuild-icons.mjs && vite",
+    "build": "node scripts/prebuild-icons.mjs && vite build",
+    "build:css": "node scripts/build-css.js",
+    "storybook": "npm run build:css && npm run prebuild-icons && storybook dev -p 6006",
+    "storybook:dev": "npm run build:css && concurrently \"storybook dev -p 6006\"",
+    "build-storybook": "npm run build:css && npm run prebuild-icons && storybook build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist .vite node_modules storybook-static"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@lwc/synthetic-shadow": "^9.0.2",
+    "@salesforce-ux/design-system": "^2.29.0",
+    "@salesforce-ux/design-system-2": "^2.0.0",
+    "@salesforce-ux/wes-badge": "^0.1.4",
+    "@salesforce-ux/wes-button": "^0.1.2",
+    "@salesforce-ux/wes-card": "^0.1.1",
+    "@salesforce-ux/wes-divider": "^0.1.1",
+    "@salesforce-ux/wes-foundation": "^0.1.1",
+    "@salesforce-ux/wes-icon": "^0.1.1",
+    "@salesforce/wes-for-ec": "^1.0.17",
+    "lightning-base-components": "^1.28.17-alpha",
+    "lit": "^3.3.2",
+    "lwc": "^9.0.2"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^10.4.2",
+    "@storybook/addon-themes": "^10.4.2",
+    "@storybook/web-components": "^10.4.2",
+    "@storybook/web-components-vite": "^10.4.2",
+    "concurrently": "^9.2.1",
+    "storybook": "^10.4.2",
+    "vite": "^7.3.1",
+    "vite-plugin-lwc": "^4.1.0"
+  }
+}

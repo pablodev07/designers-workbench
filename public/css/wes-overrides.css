@@ -1,0 +1,24 @@
+/*
+ * WES Overrides for Lightning Base Components in Storybook
+ * Patches issues in @salesforce/wes-for-ec npm package.
+ */
+
+:root {
+  --slds-g-font-family: 'Salesforce Sans', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+}
+
+.wes-page {
+  font-family: var(--wes-g-font-family-sans);
+}
+
+.slds-card__header {
+  display: flex !important;
+}
+
+.slds-card__body {
+  margin: revert !important;
+  padding-left: var(--slds-c-card-body-spacing-inline-start, 1rem) !important;
+  padding-right: var(--slds-c-card-body-spacing-inline-end, 1rem) !important;
+}

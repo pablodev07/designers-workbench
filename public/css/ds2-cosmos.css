@@ -1,0 +1,10 @@
+/*
+ * DS2 Cosmos theme loader for Storybook.
+ * This imports the DS2 Cosmos bundled CSS from the npm package.
+ * The actual CSS is served from node_modules via Storybook's staticDirs,
+ * but for the theme switcher we need a local file that can be referenced by path.
+ *
+ * Note: The real DS2 CSS is large — in production this is loaded by slds-loader.js.
+ * For Storybook, we reference it via a <link> tag pointed at the static dir.
+ */
+@import url('/slds/salesforce-lightning-design-system.min.css');

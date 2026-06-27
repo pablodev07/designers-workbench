@@ -1,0 +1,25 @@
+html {
+  overscroll-behavior: none;
+}
+
+#app {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#app.is-ready {
+  opacity: 1;
+}
+
+#app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: system-ui, sans-serif;
+  color: #666;
+}
+
+#app.is-ready ~ #app-loading {
+  display: none;
+}

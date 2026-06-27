@@ -1,0 +1,68 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as Stories from './button.stories';
+
+<Meta of={Stories} />
+
+# Button
+
+A button component wrapping `<lightning-button>` for use in Salesforce Lightning applications. Supports all standard variants, disabled state, and icon placement.
+
+## Properties
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>label</code></td>
+      <td><code>String</code></td>
+      <td><code>"Button"</code></td>
+      <td>Text displayed on the button</td>
+    </tr>
+    <tr>
+      <td><code>variant</code></td>
+      <td><code>String</code></td>
+      <td><code>"brand"</code></td>
+      <td>Visual style: <code>base</code>, <code>neutral</code>, <code>brand</code>, <code>brand-outline</code>, <code>destructive</code>, <code>destructive-text</code>, <code>success</code>, <code>inverse</code></td>
+    </tr>
+    <tr>
+      <td><code>disabled</code></td>
+      <td><code>Boolean</code></td>
+      <td><code>false</code></td>
+      <td>Whether the button is disabled</td>
+    </tr>
+    <tr>
+      <td><code>iconName</code></td>
+      <td><code>String</code></td>
+      <td><code>undefined</code></td>
+      <td>Lightning icon name (e.g. <code>utility:download</code>)</td>
+    </tr>
+    <tr>
+      <td><code>iconPosition</code></td>
+      <td><code>String</code></td>
+      <td><code>"left"</code></td>
+      <td>Position of the icon: <code>left</code> or <code>right</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## Usage
+
+```html
+<c-button label="Save" variant="brand"></c-button>
+<c-button label="Cancel" variant="neutral"></c-button>
+<c-button label="Delete" variant="destructive"></c-button>
+<c-button label="Download" icon-name="utility:download"></c-button>
+```
+
+<Canvas of={Stories.Default} />
+
+## Controls
+
+<Controls />

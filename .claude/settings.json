@@ -1,0 +1,42 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/ensure-node20.sh",
+            "timeout": 10,
+            "statusMessage": "Ensuring Node 20 via nvm..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/component-creation-reminder.sh",
+            "timeout": 5,
+            "statusMessage": "Checking for component creation..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/update-component-docs.sh",
+            "timeout": 5,
+            "statusMessage": "Checking component docs..."
+          }
+        ]
+      }
+    ]
+  }
+}

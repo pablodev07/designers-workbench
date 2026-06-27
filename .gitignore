@@ -1,0 +1,10 @@
+node_modules/
+dist/
+storybook-static/
+.vite/
+src/build/generated/
+public/css/slds-font-tokens.css
+public/css/wes-for-ec-offline.css
+.claude/settings.local.json
+*.log
+.DS_Store
