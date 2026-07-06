@@ -165,7 +165,7 @@ This project extends the official Salesforce [design-system-2-starter-kit](https
 
 ## UI Health Check Skills
 
-This project integrates the health check skills from the [`lwc-storybook` healthchecks branch](../lwc-storybook), located in `public/skills/`:
+This project integrates the health check skills from the [`lwc-storybook\healthchecks`](https://github.com/SF-BT-NonProd/lwc-storybook/tree/healthchecks) branch, located in `public/skills/`:
 
 | Skill | Purpose |
 |-------|---------|
