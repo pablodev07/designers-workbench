@@ -23,11 +23,27 @@ const config: StorybookConfig = {
       from: '../node_modules/@salesforce/wes-for-ec/dist',
       to: '/wes-for-ec',
     },
+    {
+      from: '../node_modules/@salesforce-ux/design-system-2/dist/css/bundled',
+      to: '/ds2',
+    },
   ],
   addons: [
     '@storybook/addon-themes',
     '@storybook/addon-docs',
   ],
+  previewHead: (head) => `
+<script src="/synthetic-shadow-browser.js"></script>
+${head}`,
+  async viteFinal(config) {
+    config.optimizeDeps = config.optimizeDeps || {};
+    config.optimizeDeps.exclude = [
+      ...(config.optimizeDeps.exclude || []),
+      '@lwc/synthetic-shadow',
+      'lwc',
+    ];
+    return config;
+  },
 };
 
 export default config;

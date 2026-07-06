@@ -1,0 +1,16 @@
+<template>
+  <lightning-datatable
+    key-field={keyField}
+    data={data}
+    columns={columns}
+    sorted-by={sortedBy}
+    sorted-direction={sortedDirection}
+    hide-checkbox-column={hideCheckboxColumn}
+    show-row-number-column={showRowNumberColumn}
+    max-row-selection={maxRowSelection}
+    selected-rows={selectedRows}
+    onsort={handleSort}
+    onrowselection={handleRowSelection}
+    onrowaction={handleRowAction}
+  ></lightning-datatable>
+</template>

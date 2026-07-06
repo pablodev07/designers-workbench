@@ -2,7 +2,7 @@
   "name": "dex-storybook-next",
   "private": true,
   "version": "1.0.0",
-  "description": "LWC component workbench — Storybook 10 catalog + runnable app shell, with SLDS Plus, WES, and DS2 Cosmos themes",
+  "description": "LWC component workbench — Storybook 10 catalog + runnable app shell, with SLDS1, WES, and SLDS2 - Cosmos themes. Created by Pablo Hernan Gerez.",
   "type": "module",
   "scripts": {
     "prebuild-icons": "node scripts/prebuild-icons.mjs",

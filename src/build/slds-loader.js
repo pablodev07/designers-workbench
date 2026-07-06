@@ -1,6 +1,6 @@
 /**
  * SLDS global stylesheets loaded as <link> tags.
- * Toggle between SLDS 1 (classic) and SLDS 2 (Cosmos) via media attribute.
+ * Toggle between SLDS1 - Lightning Blue (classic) and SLDS2 - Cosmos via media attribute.
  */
 
 const slds2CssUrl = new URL(

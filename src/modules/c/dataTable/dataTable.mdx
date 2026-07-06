@@ -1,0 +1,134 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as Stories from './dataTable.stories';
+
+<Meta of={Stories} />
+
+# Data Table
+
+A component wrapping `<lightning-datatable>` for displaying structured data in rows and columns with sorting, row selection, and row-level actions.
+
+## Properties
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>columns</code></td>
+      <td><code>Array</code></td>
+      <td><code>[]</code></td>
+      <td>Column definitions (label, fieldName, type, sortable, etc.)</td>
+    </tr>
+    <tr>
+      <td><code>data</code></td>
+      <td><code>Array</code></td>
+      <td><code>[]</code></td>
+      <td>Array of row objects to display</td>
+    </tr>
+    <tr>
+      <td><code>keyField</code></td>
+      <td><code>String</code></td>
+      <td><code>"id"</code></td>
+      <td>Field name used as a unique row identifier</td>
+    </tr>
+    <tr>
+      <td><code>sortedBy</code></td>
+      <td><code>String</code></td>
+      <td><code>undefined</code></td>
+      <td>Field name the table is currently sorted by</td>
+    </tr>
+    <tr>
+      <td><code>sortedDirection</code></td>
+      <td><code>String</code></td>
+      <td><code>"asc"</code></td>
+      <td>Sort direction: <code>"asc"</code> or <code>"desc"</code></td>
+    </tr>
+    <tr>
+      <td><code>hideCheckboxColumn</code></td>
+      <td><code>Boolean</code></td>
+      <td><code>false</code></td>
+      <td>Whether to hide the row selection checkboxes</td>
+    </tr>
+    <tr>
+      <td><code>showRowNumberColumn</code></td>
+      <td><code>Boolean</code></td>
+      <td><code>false</code></td>
+      <td>Whether to display row numbers</td>
+    </tr>
+    <tr>
+      <td><code>maxRowSelection</code></td>
+      <td><code>Number</code></td>
+      <td><code>undefined</code></td>
+      <td>Maximum number of rows that can be selected</td>
+    </tr>
+    <tr>
+      <td><code>selectedRows</code></td>
+      <td><code>Array</code></td>
+      <td><code>[]</code></td>
+      <td>Array of key-field values for pre-selected rows</td>
+    </tr>
+  </tbody>
+</table>
+
+## Events
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Detail</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>sort</code></td>
+      <td><code>{"{ fieldName, sortDirection }"}</code></td>
+      <td>Fired when a sortable column header is clicked</td>
+    </tr>
+    <tr>
+      <td><code>rowselection</code></td>
+      <td><code>{"{ selectedRows }"}</code></td>
+      <td>Fired when row selection changes</td>
+    </tr>
+    <tr>
+      <td><code>rowaction</code></td>
+      <td><code>{"{ action, row }"}</code></td>
+      <td>Fired when a row-level action is triggered</td>
+    </tr>
+  </tbody>
+</table>
+
+## Usage
+
+```html
+<c-data-table
+  columns={columns}
+  data={data}
+  key-field="id"
+  sorted-by={sortedBy}
+  sorted-direction={sortedDirection}
+  onsort={handleSort}
+  onrowselection={handleRowSelection}
+></c-data-table>
+```
+
+<Canvas of={Stories.Default} />
+
+## With Row Actions
+
+<Canvas of={Stories.WithRowActions} />
+
+## With Row Numbers
+
+<Canvas of={Stories.WithRowNumbers} />
+
+## Controls
+
+<Controls />

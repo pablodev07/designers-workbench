@@ -1,1 +1,2 @@
-export default {};
+import templates from '../../../generated/iconSvgStandard.js';
+export default templates;

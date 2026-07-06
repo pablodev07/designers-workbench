@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/web-components';
-import '@lwc/synthetic-shadow';
 import './components.js';
 import { sldsTheming, themeGlobalTypes } from './sldsTheming.js';
 

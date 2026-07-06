@@ -28,18 +28,29 @@ function suppressLbcWarningsPlugin() {
   };
 }
 
+const gateShimPath = path.resolve('./src/build/shim/gate.js');
+
+function salesforceShimsPlugin() {
+  return {
+    name: 'salesforce-shims',
+    enforce: 'pre',
+    resolveId(source) {
+      if (source.startsWith('@salesforce/gate/')) {
+        return gateShimPath;
+      }
+    },
+  };
+}
+
 export default defineConfig({
   base: './',
   plugins: [
+    salesforceShimsPlugin(),
     suppressLbcWarningsPlugin(),
     resolveIconTemplatesPlugin(),
     lwc({
       modules: [
         { dir: path.resolve('./src/modules') },
-        {
-          name: '@salesforce/gate/bc.260.enableComboboxElementInternals',
-          path: path.resolve('./src/build/shim/gateComboboxElementInternalsClosed.js'),
-        },
         { npm: 'lightning-base-components' },
       ],
       disableSyntheticShadowSupport: false,
@@ -53,6 +64,10 @@ export default defineConfig({
         /node_modules\/storybook\//,
         /node_modules\/@storybook\//,
         /node_modules\/lit/,
+        /node_modules\/\.cache\//,
+        /\.storybook\//,
+        /\.mdx$/,
+        /\.stories\.js$/,
         ...iconTemplateExcludeDirs,
       ],
     }),

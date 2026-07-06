@@ -24,7 +24,7 @@ Components built here are intended to be **portable to a Salesforce org**.
 
 | Entry | Command | Port | Purpose |
 |-------|---------|------|---------|
-| App shell | `npm run dev` | 3000 | Full SPA with routing, app launcher, DS2 theming |
+| App shell | `npm run dev` | 3000 | Full SPA with routing, app launcher, SLDS2 - Cosmos theming |
 | Storybook | `npm run storybook` | 6006 | Component catalog with 3-theme switcher, MDX docs, controls |
 
 Both use the **same Vite config** and `vite-plugin-lwc` — no separate Rollup pre-build step.
@@ -32,8 +32,8 @@ Both use the **same Vite config** and `vite-plugin-lwc` — no separate Rollup p
 ### Design System Requirements
 
 Every component must render correctly under **three design systems** (switchable in Storybook):
-- **DS2 Cosmos** — Salesforce Design System 2 (default)
-- **SLDS Plus** — Classic SLDS (Salesforce Lightning Design System)
+- **SLDS2 - Cosmos** — Salesforce Design System 2 (default)
+- **SLDS1 - Lightning Blue** — Classic SLDS (Salesforce Lightning Design System)
 - **WES (Web Experience Standard)** — Design subset for Experience Cloud sites
 
 ### Component Structure
@@ -81,7 +81,7 @@ npm run build-storybook
 - **LWC 9** with `vite-plugin-lwc` (native Vite integration, HMR)
 - **Storybook 10** (`@storybook/web-components-vite`)
 - **@salesforce-ux/design-system** ^2.29 (SLDS)
-- **@salesforce-ux/design-system-2** ^2.0 (DS2 Cosmos)
+- **@salesforce-ux/design-system-2** ^2.0 (SLDS2 - Cosmos)
 - **@salesforce/wes-for-ec** ^1.0.17 (WES for Experience Cloud)
 - **lightning-base-components** ^1.28.17-alpha
 - **@lwc/synthetic-shadow** ^9.0.2
