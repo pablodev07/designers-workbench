@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     options: {},
   },
   stories: [
+    '../docs/**/*.mdx',
     '../src/modules/c/**/*.stories.@(js|jsx)',
     '../src/modules/c/**/*.mdx',
   ],
@@ -34,6 +35,7 @@ const config: StorybookConfig = {
   ],
   previewHead: (head) => `
 <script src="/synthetic-shadow-browser.js"></script>
+<link rel="stylesheet" href="/css/btd-docs.css" />
 ${head}`,
   async viteFinal(config) {
     config.optimizeDeps = config.optimizeDeps || {};

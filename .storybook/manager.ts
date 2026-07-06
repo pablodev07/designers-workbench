@@ -5,5 +5,6 @@ addons.setConfig({
   theme: create({
     base: 'light',
     brandTitle: 'DEX Storybook Next',
+    brandImage: '/images/dexstorybooknext.png',
   }),
 });

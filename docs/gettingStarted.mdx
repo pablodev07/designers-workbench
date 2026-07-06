@@ -1,0 +1,190 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started" />
+
+<div className="read-me header">
+  <span className="sparkle sparkle-3"></span>
+  <div className="header-content">
+    <h1><strong>Ship with confidence.</strong><br/>Build with AI.</h1>
+    <p><strong>DEX Storybook Next</strong> creates, tests, and validates your components automatically. <br/>
+    No technical frictions, just a plug-n-play platform to focus on creating components with production-ready code, compliant with SLDS styling and design patterns.</p>
+  </div>
+  <div className="header-mascot">
+    <img src="/images/read-me/astrobot.png" alt="Astrobot" />
+  </div>
+</div>
+
+<div className="read-me intro">
+  <h2>Build components faster with AI by your side</h2>
+  <p>DEX Storybook Next is an AI-powered workbench for Salesforce component development. It combines a full app shell, taken from the official <strong>Design 2 Starter Kit</strong>, with an isolated Storybook catalog. This project enforces compliance across three design systems (SLDS2, SLDS1, and WES), and uses Claude Code to scaffold, validate, and document every component you create.</p>
+</div>
+
+<hr />
+
+<div className="read-me brief">
+  <h2>Quick Navigation</h2>
+
+  <a href="#setup">
+    <img src="/images/read-me/cog.svg" alt="Configure" />
+    <div className="text">
+      <p>Setup and Run</p>
+      <small>Install, configure, and start the workbench</small>
+    </div>
+  </a>
+
+  <a href="#themes">
+    <img src="/images/read-me/css-3.svg" alt="Design Systems" />
+    <div className="text">
+      <p>Theme Switcher</p>
+      <small>Switch between SLDS2, SLDS1, and WES</small>
+    </div>
+  </a>
+
+  <a href="#create">
+    <img src="/images/read-me/add.svg" alt="Create" />
+    <div className="text">
+      <p>Creating Components</p>
+      <small>AI-assisted component scaffolding</small>
+    </div>
+  </a>
+
+  <a href="#checklist">
+    <img src="/images/read-me/check.svg" alt="Checklist" />
+    <div className="text">
+      <p>Health Check</p>
+      <small>Audit components for quality and compliance</small>
+    </div>
+  </a>
+</div>
+
+<hr />
+
+<div className="read-me documentation">
+  <h2>Getting Started</h2>
+
+  <h3 id="setup">Setup and Run</h3>
+
+  <p>Ensure you have Node 20 installed (the project includes an .nvmrc):</p>
+</div>
+
+```bash
+nvm use
+npm install
+```
+
+<div className="read-me documentation">
+  <p>Run either entry point:</p>
+</div>
+
+```bash
+npm run storybook   # Component catalog on http://localhost:6006
+npm run dev         # App shell on http://localhost:3000
+```
+
+<div className="read-me documentation">
+  <p>Both use the same Vite config and share src/modules/. They are independent processes.</p>
+
+  <h3 id="themes">Theme Switcher</h3>
+
+  <img src="/images/read-me/themeswitcher.png" alt="Theme switcher" style={{ width: '350px', height: '50px' }} />
+
+  <p>Use the <strong>Theme</strong> toolbar button to switch between design systems:</p>
+
+  <div className="block">
+    <p><strong>SLDS2 - Cosmos</strong> — Salesforce Design System 2 (default). Uses slds2.cosmos.css with all --slds-r-* and --slds-g-* custom properties.</p>
+    <p><strong>SLDS1 - Lightning Blue</strong> — Classic SLDS. Uses salesforce-lightning-design-system.min.css.</p>
+    <p><strong>WES for EC</strong> — Web Experience Standard for Experience Cloud. Wraps components in .wes-page .wes-style .wes-theme classes.</p>
+  </div>
+
+  <p>Components adapt to all three themes — never hard-code colors, fonts, or spacing. Use SLDS tokens and styling hooks exclusively, enforced with Claude instructions.</p>
+
+  <h3 id="create">Creating Components</h3>
+
+  <p>Component creation is handled by <strong>Claude Code</strong>. When you ask Claude to create a component inside this project, it automatically:</p>
+
+  <div className="steps-grid">
+    <div className="step-card">
+      <span className="step-pill"><img src="/images/read-me/scaffold.png" alt="" />Scaffold</span>
+      <p>Creates all files — .js, .html, .css, .stories.js, and .mdx — in one go.</p>
+    </div>
+    <div className="step-card">
+      <span className="step-pill"><img src="/images/read-me/register.png" alt="" />Register</span>
+      <p>Adds the component to .storybook/components.js so Storybook renders it instantly.</p>
+    </div>
+    <div className="step-card">
+      <span className="step-pill"><img src="/images/read-me/style.png" alt="" />Style</span>
+      <p>Applies SLDS styling rules and platform conventions automatically.</p>
+    </div>
+    <div className="step-card">
+      <span className="step-pill"><img src="/images/read-me/document.png" alt="" />Document</span>
+      <p>Generates Storybook stories with controls and full documentation.</p>
+    </div>
+  </div>
+
+  <p>Components live in <code>src/modules/c/yourComponent/</code> and follow these enforced rules:</p>
+
+  <div className="block">
+    <p><strong>1.</strong> Always wrap Lightning Base Components — never recreate what lightning-* provides</p>
+    <p><strong>2.</strong> Use built-in variants first — variant=&quot;success&quot; over custom CSS</p>
+    <p><strong>3.</strong> SLDS styling hooks at :host — --slds-c-* custom properties</p>
+    <p><strong>4.</strong> SLDS utility classes for spacing, alignment, typography</p>
+    <p><strong>5.</strong> No !important, no hard-coded colors, no direct SLDS class overrides</p>
+  </div>
+
+  <h3 id="checklist">Health Check and Quality</h3>
+
+  <p>This project includes UI Health Check skills that audit components across 8 dimensions:</p>
+
+  <div className="block">
+    <p>Accessibility (WCAG 2.1 AA) — LWC best practices — Performance — Design system compliance (SLDS2, SLDS1, WES) — JavaScript quality — Testing coverage — Storybook integration — Security</p>
+  </div>
+
+  <p>Run <code>/ui-health-check</code> for a full audit, or <code>/ui-health-fix --preview</code> to see auto-fix proposals with confidence scoring.</p>
+
+  <h4>Claude Hooks (Automatic)</h4>
+
+  <p>The following hooks run automatically when working with Claude Code:</p>
+
+  <div className="block">
+    <p><strong>Pre-tool:</strong> Ensures Node 20 via nvm before any shell command</p>
+    <p><strong>Post-tool:</strong> Flags missing .mdx docs when component files are modified</p>
+    <p><strong>Prompt:</strong> Triggers component creation procedure when relevant</p>
+  </div>
+</div>
+
+<hr />
+
+<div className="read-me documentation checklist">
+  <h3>Component Quality Checklist</h3>
+
+  <p>Best practices enforced before a component is considered complete:</p>
+
+  <ul>
+    <li>
+      <input type="checkbox" name="checklist1" id="checklist1" />
+      <label htmlFor="checklist1">Three-theme compatibility<small>Component renders correctly in SLDS2, SLDS1, and WES without visual bugs.</small></label>
+    </li>
+    <li>
+      <input type="checkbox" name="checklist2" id="checklist2" />
+      <label htmlFor="checklist2">Accessibility<small>WCAG 2.1 AA: ARIA attributes, keyboard navigation, 4.5:1 contrast, focus management.</small></label>
+    </li>
+    <li>
+      <input type="checkbox" name="checklist3" id="checklist3" />
+      <label htmlFor="checklist3">Documentation<small>MDX docs page with live examples, API table, and usage guidance.</small></label>
+    </li>
+    <li>
+      <input type="checkbox" name="checklist4" id="checklist4" />
+      <label htmlFor="checklist4">Platform portability<small>Only uses @api properties, lightning-* base components, and SLDS tokens.</small></label>
+    </li>
+    <li>
+      <input type="checkbox" name="checklist5" id="checklist5" />
+      <label htmlFor="checklist5">Storybook stories<small>Stories with controls for all @api properties, covering default, edge, and error states.</small></label>
+    </li>
+  </ul>
+</div>
+
+<div className="read-me documentation">
+  <h3>Credits</h3>
+  <p><strong>DEX Storybook Next</strong> created by Pablo Hernan Gerez (UX Engineer).</p>
+  <p><strong>Health Check Skills</strong> created by Damilare Olowoniyi (Lead UX Engineer)</p>
+</div>

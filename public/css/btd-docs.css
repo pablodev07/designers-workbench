@@ -1,0 +1,558 @@
+@font-face {
+  font-family: 'Salesforce Sans';
+  src: url('../fonts/SalesforceSans-Regular.woff2') format('woff2'), url('../fonts/SalesforceSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Salesforce Sans';
+  src: url('../fonts/SalesforceSans-Bold.woff2') format('woff2'), url('../fonts/SalesforceSans-Bold.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Avant Garde Salesforce';
+  src: url('../fonts/AvantGardeDemi.woff2') format('woff2'), url('../fonts/AvantGardeDemi.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/* Salesforce Brand Guidelines 2026 tokens */
+:root {
+  --brand-electric-blue-50: #066AFE;
+  --brand-electric-blue-30: #022AC0;
+  --brand-electric-blue-15: #032D60;
+  --brand-cloud-blue-95: #EAF5FE;
+  --brand-cloud-blue-80: #90D0FE;
+  --brand-cloud-blue-68: #00B3FF;
+  --brand-teal-60: #06A59A;
+  --brand-teal-80: #04E1CB;
+  --brand-teal-95: #DEF9F3;
+  --brand-radius-sm: 12px;
+  --brand-radius-md: 20px;
+  --brand-radius-lg: 40px;
+  --brand-radius-pill: 999px;
+  --font-headline: "Avant Garde Salesforce", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  --font-body: "Salesforce Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Typography scale (from Brand Layout Typography 2026)
+   H1: 120pt Avant Garde Demi — scaled for web: 4.5rem
+   H2: 60pt  Avant Garde Demi — scaled for web: 2.5rem
+   H3: 30pt  Avant Garde Demi — scaled for web: 1.5rem (Electric Blue 50)
+   H4: 15pt  Avant Garde Demi — scaled for web: 1.1rem (Electric Blue 50)
+   B1: 12pt  Salesforce Sans  — 16px (body)
+   B2: 9pt   Salesforce Sans  — 14px (small body)
+   CTA: 12pt Avant Garde Demi — pill buttons
+   C1: 9pt   Salesforce Sans  — 12px (caption)
+*/
+
+.sbdocs {
+  background-color: white;
+  font-family: var(--font-body);
+}
+
+.sbdocs h1 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-15);
+  font-size: 4.5rem;
+  line-height: 1.05;
+}
+
+.sbdocs h2 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-15);
+  font-size: 2.5rem;
+  line-height: 1.15;
+}
+
+.sbdocs h3 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-50);
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.sbdocs h4 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-50);
+  font-size: 1.1rem;
+  line-height: 1.4;
+  background: none;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.sbdocs p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #181818;
+}
+
+.sbdocs small {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #555;
+}
+
+.sbdocs a {
+  color: var(--brand-electric-blue-50);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sbdocs a:hover {
+  color: var(--brand-electric-blue-30);
+  text-decoration: underline;
+}
+
+.sidebar-header div a {
+  font-size: 24px;
+}
+
+/* Header hero — brand gradient card (#90D0FE → #EAF5FE vertical) */
+.read-me.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0;
+  background: linear-gradient(to bottom, var(--brand-cloud-blue-80), var(--brand-cloud-blue-95));
+  border-radius: var(--brand-radius-lg);
+  position: relative;
+  overflow: visible;
+}
+
+.read-me.header .header-content {
+  flex: 1;
+  max-width: 70%;
+  padding: 56px 0 56px 48px;
+}
+
+.read-me.header .header-mascot {
+  flex-shrink: 0;
+}
+
+.read-me.header .header-mascot img {
+  width: auto;
+  height: 300px;
+  display: block;
+  margin-bottom: -4px;
+  filter: drop-shadow(0 8px 24px rgba(6, 106, 254, 0.15));
+}
+
+/* AI sparkles — floating top-right to reinforce AI-assisted concept */
+.read-me.header::before {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: -34px;
+  width: 80px;
+  height: 80px;
+  background: url(../images/read-me/sparkle-1.png) no-repeat center / contain;
+  z-index: 2;
+  animation: sparkle-float 3s ease-in-out infinite;
+}
+
+.read-me.header::after {
+  content: "";
+  position: absolute;
+  right: 110px;
+  top: -18px;
+  width: 56px;
+  height: 56px;
+  background: url(../images/read-me/sparkle-2.png) no-repeat center / contain;
+  z-index: 2;
+  animation: sparkle-float 3s ease-in-out infinite 0.8s;
+}
+
+
+.read-me.header .sparkle-3 {
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  width: 36px;
+  height: 36px;
+  background: url(../images/read-me/sparkle-1.png) no-repeat center / contain;
+  z-index: 2;
+  animation: sparkle-float 2.5s ease-in-out infinite 1.5s;
+}
+
+@keyframes sparkle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(4deg); }
+}
+
+.read-me.header h1,
+.read-me.header h2 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-15);
+  background: none;
+  line-height: 1.15;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 16px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.read-me.header h1 strong,
+.read-me.header h2 strong {
+  color: var(--brand-electric-blue-50);
+}
+
+.read-me.header .header-content p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--brand-electric-blue-15);
+  opacity: 0.8;
+  margin: 0;
+  background: none;
+  padding: 0;
+}
+
+/* Intro section below the header card */
+.read-me.intro {
+  margin: 40px 0 0;
+  padding: 0;
+}
+
+.read-me.intro h2 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-50);
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.read-me.intro p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  max-width: 720px;
+}
+
+/* Steps grid — 2x2 layout with glass pill titles */
+.read-me.documentation .steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0 28px;
+}
+
+.read-me.documentation .step-card {
+  background: var(--brand-cloud-blue-95);
+  border-radius: var(--brand-radius-md);
+  padding: 24px;
+  border: 1px solid transparent;
+  transition: 0.2s ease all;
+}
+
+.read-me.documentation .step-card:hover {
+  border-color: var(--brand-cloud-blue-80);
+  background: white;
+}
+
+.read-me.documentation .step-card .step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-headline);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--brand-electric-blue-15);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  padding: 10px 32px 10px 14px;
+  border-radius: var(--brand-radius-pill);
+  box-shadow:
+    0 4px 18px rgba(6, 106, 254, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  margin-bottom: 14px;
+}
+
+.read-me.documentation .step-card .step-pill img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.read-me.documentation .step-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Quick navigation cards */
+.read-me.brief:after {
+  clear: both;
+  content: '';
+  overflow: hidden;
+  display: block;
+}
+
+.read-me.brief h2 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-15);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  margin-bottom: 25px;
+}
+
+.read-me.brief > a {
+  display: block;
+  background-color: var(--brand-cloud-blue-95);
+  border-radius: var(--brand-radius-md);
+  padding: 22px 24px;
+  transition: 0.25s ease all;
+  position: relative;
+  margin-bottom: 20px;
+  top: 0px;
+  width: 47.5%;
+  float: left;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+.read-me.brief > a:nth-child(2n) {
+  margin-right: 5%;
+}
+
+.read-me.brief > a:hover {
+  text-decoration: none;
+  background-color: white;
+  border-color: var(--brand-cloud-blue-80);
+  box-shadow: 0 4px 20px -4px rgba(6, 106, 254, 0.12);
+  top: -2px;
+}
+
+.read-me.brief > a img {
+  float: left;
+  margin: 7px;
+  width: 48px;
+  height: 48px;
+  background: none;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: 0.25s ease all;
+}
+
+.read-me.brief > a:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+.read-me.brief > a .text {
+  background: none;
+  padding-left: 80px;
+}
+
+.read-me.brief > a p {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  color: var(--brand-electric-blue-15);
+  font-family: var(--font-headline);
+  font-weight: 600;
+  background-color: transparent;
+}
+
+.read-me.brief > a small {
+  font-size: 0.85rem;
+  color: #555;
+  background-color: transparent;
+  font-family: var(--font-body);
+}
+
+.locked {
+  cursor: not-allowed;
+}
+
+.locked > a {
+  pointer-events: none;
+}
+
+/* Support link */
+p.support {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+p.support a {
+  color: var(--brand-electric-blue-50);
+  font-family: var(--font-headline);
+  font-weight: 600;
+}
+
+/* Documentation body */
+.read-me.documentation {
+  margin: 50px 0 0;
+}
+
+.read-me.documentation > h2 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-15);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.read-me.documentation h3 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-50);
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  margin-bottom: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.read-me.documentation h3:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.read-me.documentation h4 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  color: var(--brand-electric-blue-50);
+  font-size: 1rem;
+  background: none;
+  border: none;
+  margin-bottom: 8px;
+  margin-top: 28px;
+}
+
+/* Info blocks with brand-colored left border */
+.read-me.documentation .block {
+  border-left: 3px solid var(--brand-electric-blue-50);
+  padding: 16px 20px;
+  margin: 12px 0 24px;
+  background: var(--brand-cloud-blue-95);
+  border-radius: 0 var(--brand-radius-sm) var(--brand-radius-sm) 0;
+}
+
+.read-me.documentation .block p {
+  margin: 0 0 6px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.read-me.documentation .block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Checklist section */
+.read-me.documentation.checklist ul {
+  padding: 0;
+}
+
+.read-me.documentation.checklist ul li {
+  list-style: none;
+  padding: 18px 22px;
+  border-radius: var(--brand-radius-sm);
+  background-color: var(--brand-cloud-blue-95);
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+  transition: 0.2s ease all;
+}
+
+.read-me.documentation.checklist ul li:hover {
+  border-color: var(--brand-cloud-blue-80);
+  background-color: white;
+}
+
+.read-me.documentation.checklist ul li > input {
+  width: 28px;
+  height: 28px;
+  margin: 8px 16px 8px 0;
+  float: left;
+  border-radius: 6px;
+  accent-color: var(--brand-electric-blue-50);
+}
+
+.read-me.documentation.checklist ul li > label {
+  display: block;
+  font-size: 16px;
+  color: var(--brand-electric-blue-15);
+  font-family: var(--font-headline);
+  font-weight: 600;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.read-me.documentation.checklist ul li > label small {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* Code blocks */
+.sbdocs pre {
+  background: var(--brand-electric-blue-15);
+  border-radius: var(--brand-radius-sm);
+  padding: 18px 22px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sbdocs code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875em;
+}
+
+.sbdocs :not(pre) > code {
+  background: var(--brand-cloud-blue-95);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--brand-electric-blue-30);
+}
+
+/* HR separator */
+.sbdocs hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brand-cloud-blue-80), transparent);
+  margin: 44px 0;
+}
+
+/* Theme switcher image */
+.read-me.documentation img {
+  border-radius: var(--brand-radius-sm);
+}
+
+/* Credits section */
+.read-me.documentation:last-child p {
+  font-size: 14px;
+  color: #555;
+}
