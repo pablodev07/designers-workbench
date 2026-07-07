@@ -1,4 +1,4 @@
-# DEX Storybook Next
+![DEX Storybook Next](/public/images/storybooknextreadme.png)
 
 A unified **Lightning Web Components workbench** that combines a runnable app shell with a Storybook 10 component catalog. Components are authored once and tested in both contexts — as isolated stories with visual controls and as mounted elements in a full LWC application.
 
