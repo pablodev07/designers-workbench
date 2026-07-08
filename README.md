@@ -91,7 +91,7 @@ dex-storybook-next/
 
 ## Theme System
 
-The Storybook toolbar provides a 3-theme switcher. The app shell defaults to SLDS2 - Cosmos with a toggle to SLDS1.
+The Storybook toolbar provides and the app shell toggle both provide a 3-theme switcher: SLDS2, SLDS1 and WES for EC.
 
 | Theme | What It Loads |
 |-------|---------------|
