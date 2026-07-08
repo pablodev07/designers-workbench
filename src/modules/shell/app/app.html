@@ -22,13 +22,13 @@
             <lightning-layout-item flexibility="auto" class="app-body__content-cell">
                 <div class="app-body__scroll-wrapper">
                     <div class="app-main">
-                        <div class="app-main__inner">
+                        <div class={appMainInnerClass}>
                             <lwc:component lwc:is={componentCtor} onnavigateback={handleNavigateBack}></lwc:component>
                         </div>
                         <shell-theme-switcher
-                            slds-version={_sldsVersion}
+                            active-theme={_activeTheme}
                             dark-mode={_darkMode}
-                            ontoggleslds={handleToggleSLDS}
+                            onthemechange={handleThemeChange}
                             ontoggledarkmode={handleToggleDarkMode}>
                         </shell-theme-switcher>
                     </div>

@@ -8,6 +8,13 @@ import {
 } from './vite-plugins/icon-templates.js';
 
 const LBC_UNDER_NODE_MODULES = /node_modules[/\\]lightning-base-components[/\\]/;
+const LWC_COMPILER_DIAGNOSTIC = /@lwc\/rollup-plugin: LWC\d{4}:/;
+const LWC_SOURCEMAP_NOISE = /Failed to load source map for.*@lwc\//;
+
+function isLbcNoise(msg) {
+  const str = String(msg);
+  return LBC_UNDER_NODE_MODULES.test(str) || LWC_COMPILER_DIAGNOSTIC.test(str) || LWC_SOURCEMAP_NOISE.test(str);
+}
 
 function suppressLbcWarningsPlugin() {
   return {
@@ -16,12 +23,12 @@ function suppressLbcWarningsPlugin() {
       const { logger } = config;
       const origWarn = logger.warn.bind(logger);
       logger.warn = (msg, options) => {
-        if (LBC_UNDER_NODE_MODULES.test(String(msg))) return;
+        if (isLbcNoise(msg)) return;
         origWarn(msg, options);
       };
       const origWarnOnce = logger.warnOnce.bind(logger);
       logger.warnOnce = (msg, options) => {
-        if (LBC_UNDER_NODE_MODULES.test(String(msg))) return;
+        if (isLbcNoise(msg)) return;
         origWarnOnce(msg, options);
       };
     },
@@ -79,9 +86,10 @@ export default defineConfig({
         const id = warning.id ?? '';
         const message = warning.message ?? '';
         if (
-          LBC_UNDER_NODE_MODULES.test(String(locFile)) ||
-          LBC_UNDER_NODE_MODULES.test(String(id)) ||
-          LBC_UNDER_NODE_MODULES.test(String(message))
+          isLbcNoise(locFile) ||
+          isLbcNoise(id) ||
+          isLbcNoise(message) ||
+          (warning.plugin === 'rollup-plugin-lwc-compiler' && /^LWC\d{4}:/.test(message))
         ) return;
         defaultHandler(warning);
       },

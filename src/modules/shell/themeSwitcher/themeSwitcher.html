@@ -14,23 +14,25 @@
             <div class={cardWrapperClass} onanimationend={handleCardWrapperAnimationEnd}>
                 <lightning-card title="Theme" class="theme-switcher-card">
                     <div class="slds-p-around_small">
-                        <div class="slds-button-group slds-m-bottom_small">
-                            <lightning-button
-                                variant="neutral"
-                                label={sldsToggleLabel}
-                                icon-name="utility:palette"
-                                onclick={handleToggleSLDSClick}>
-                            </lightning-button>
-                            <template lwc:if={showDarkModeButton}>
+                        <div class="theme-button-group slds-m-bottom_small">
+                            <template for:each={themeOptions} for:item="opt">
                                 <lightning-button
-                                    class="slds-m-left_small"
-                                    variant="neutral"
-                                    label={darkModeLabel}
-                                    icon-name="utility:light_bulb"
-                                    onclick={handleToggleDarkModeClick}>
+                                    key={opt.value}
+                                    variant={opt.variant}
+                                    label={opt.label}
+                                    data-theme={opt.value}
+                                    onclick={handleThemeSelect}>
                                 </lightning-button>
                             </template>
                         </div>
+                        <template lwc:if={showDarkModeButton}>
+                            <lightning-button
+                                variant="neutral"
+                                label={darkModeLabel}
+                                icon-name="utility:light_bulb"
+                                onclick={handleToggleDarkModeClick}>
+                            </lightning-button>
+                        </template>
                     </div>
                 </lightning-card>
             </div>

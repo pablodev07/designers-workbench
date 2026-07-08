@@ -2,6 +2,12 @@ lightning-card {
     --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4);
 }
 
+.theme-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--slds-g-spacing-2, 0.5rem);
+}
+
 .theme-switcher {
     bottom: 0;
     right: 0;

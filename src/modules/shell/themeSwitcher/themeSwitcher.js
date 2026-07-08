@@ -2,21 +2,25 @@ import { LightningElement, api } from 'lwc';
 import { ensureSlds1Loaded } from '../../../build/slds-loader';
 
 export default class ThemeSwitcher extends LightningElement {
-    @api sldsVersion = 2;
+    @api activeTheme = 'ds2';
     @api darkMode = false;
     isCardOpen = false;
     isCardClosing = false;
 
-    get sldsToggleLabel() {
-        return this.sldsVersion === 2 ? 'Switch to SLDS1 - Lightning Blue' : 'Switch to SLDS2 - Cosmos';
-    }
-
     get showDarkModeButton() {
-        return this.sldsVersion === 2;
+        return this.activeTheme === 'ds2';
     }
 
     get darkModeLabel() {
         return this.darkMode ? 'Light Mode' : 'Dark Mode';
+    }
+
+    get themeOptions() {
+        return [
+            { label: 'SLDS2 - Cosmos', value: 'ds2', variant: this.activeTheme === 'ds2' ? 'brand' : 'neutral' },
+            { label: 'SLDS1 - Lightning Blue', value: 'slds1', variant: this.activeTheme === 'slds1' ? 'brand' : 'neutral' },
+            { label: 'WES for EC', value: 'wes', variant: this.activeTheme === 'wes' ? 'brand' : 'neutral' },
+        ];
     }
 
     disconnectedCallback() {
@@ -77,8 +81,11 @@ export default class ThemeSwitcher extends LightningElement {
         }
     };
 
-    handleToggleSLDSClick() {
-        this.dispatchEvent(new CustomEvent('toggleslds', { bubbles: true, composed: true }));
+    handleThemeSelect(event) {
+        const theme = event.currentTarget.dataset.theme;
+        if (theme && theme !== this.activeTheme) {
+            this.dispatchEvent(new CustomEvent('themechange', { bubbles: true, composed: true, detail: { theme } }));
+        }
     }
 
     handleToggleDarkModeClick() {

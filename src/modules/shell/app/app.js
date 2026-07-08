@@ -8,7 +8,7 @@ import {
     persistAppId,
     DEFAULT_APP_ID,
 } from '../../../apps.config';
-import { toggleSLDS, activeSLDSVersion, STORAGE_KEY_SLDS_VERSION } from '../../../build/slds-loader';
+import { activateSLDS2, activateSLDS1, activateWES, activeTheme, activeSLDSVersion, STORAGE_KEY_SLDS_VERSION } from '../../../build/slds-loader';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
 import Contacts from 'page/contacts';
@@ -41,6 +41,7 @@ const STORAGE_KEY_DARK_MODE = 'slds-ui-dark-mode';
 export default class App extends LightningElement {
     route;
     _sldsVersion = 2;
+    _activeTheme = 'ds2';
     _darkMode = false;
     _currentApp = getPersistedAppId() || DEFAULT_APP_ID;
     selectedPanel = 'agentforce_panel';
@@ -100,8 +101,17 @@ export default class App extends LightningElement {
         }));
     }
 
+    get isWesActive() {
+        return this._activeTheme === 'wes';
+    }
+
+    get appMainInnerClass() {
+        return this.isWesActive ? 'app-main__inner wes-page wes-style wes-theme wes-npm' : 'app-main__inner';
+    }
+
     connectedCallback() {
         this._restorePreferences();
+        this._activeTheme = activeTheme();
         this._sldsVersion = activeSLDSVersion();
         setCurrentAppForLinks(this._currentApp);
         this.unsubscribe = subscribe((route) => {
@@ -138,11 +148,23 @@ export default class App extends LightningElement {
         document.documentElement.classList.remove('builder-active');
     }
 
-    async handleToggleSLDS() {
-        await toggleSLDS();
+    async handleThemeChange(event) {
+        const theme = event.detail?.theme;
+        if (!theme) return;
+
+        if (theme === 'ds2') {
+            activateSLDS2();
+        } else if (theme === 'slds1') {
+            await activateSLDS1();
+        } else if (theme === 'wes') {
+            activateWES();
+        }
+
+        this._activeTheme = theme;
         this._sldsVersion = activeSLDSVersion();
-        localStorage.setItem(STORAGE_KEY_SLDS_VERSION, String(this._sldsVersion));
-        if (this._sldsVersion !== 2 && this._darkMode) {
+        localStorage.setItem(STORAGE_KEY_SLDS_VERSION, theme === 'wes' ? 'wes' : String(this._sldsVersion));
+
+        if (theme !== 'ds2' && this._darkMode) {
             this._darkMode = false;
             document.body.classList.remove('slds-color-scheme_dark');
             localStorage.setItem(STORAGE_KEY_DARK_MODE, 'false');

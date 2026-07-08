@@ -26,6 +26,29 @@ When asked to create ANY UI component (button, card, input, modal, etc.):
 | Modal | `<lightning-modal>` |
 | Icon | `<lightning-icon>` |
 | Badge | `<lightning-badge>` |
+| Layout (grid/rows) | `<lightning-layout>` + `<lightning-layout-item>` |
+
+## Layout and Spacing
+
+When composing multiple components on a page (e.g. a button above a data table, or cards stacked vertically), **always use `<lightning-layout>` and `<lightning-layout-item>`** to control spacing and alignment. Never rely on bare stacking — components placed without a layout container will have no spacing between them.
+
+```html
+<lightning-layout multiple-rows="true">
+    <lightning-layout-item size="12" class="slds-m-bottom_medium">
+        <lightning-button label="New Record" variant="brand"></lightning-button>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+        <lightning-datatable columns={columns} data={data} key-field="id"></lightning-datatable>
+    </lightning-layout-item>
+</lightning-layout>
+```
+
+Key attributes:
+- `multiple-rows="true"` — allows items to wrap to new rows
+- `size` — column span out of 12 (e.g. `"6"` for half-width, `"12"` for full-width)
+- `medium-device-size` / `large-device-size` — responsive breakpoints
+- `padding="horizontal-small"` — adds gutters between side-by-side items
+- Use SLDS margin utilities (`slds-m-bottom_medium`, `slds-m-top_small`) on items for vertical spacing
 
 ## Customizing Base Component Appearance
 

@@ -18,7 +18,29 @@
 }
 
 .slds-card__body {
-  margin: revert !important;
+  margin-block-start: var(--sds-c-card-body-spacing-block-start, var(--sds-c-card-body-spacing-block, 0.75rem)) !important;
+  margin-block-end: var(--sds-c-card-body-spacing-block-end, var(--sds-c-card-body-spacing-block, 0.75rem)) !important;
   padding-left: var(--slds-c-card-body-spacing-inline-start, 1rem) !important;
   padding-right: var(--slds-c-card-body-spacing-inline-end, 1rem) !important;
+}
+
+/* Input icon buttons: WES sets padding:20px/right:0/top:-7px on the icon wrapper
+   AND applies block/inline padding to all .slds-button elements (including the
+   inner button of lightning-button-icon). Both must be neutralized. */
+.slds-input-has-icon .slds-input__icon_right {
+  padding: 0 !important;
+  right: 0.75rem !important;
+  top: 35% !important;
+  margin-top: -0.4375rem !important;
+}
+
+.slds-input-has-icon .slds-input__icon_right .slds-button {
+  padding: 0 !important;
+}
+
+/* Datepicker: WES sets --slds-c-input-spacing-horizontal-start: 2.6rem on
+   .slds-input-has-icon .slds-input, reserving left space for a left icon that
+   doesn't exist in the datepicker. Reset to match regular inputs. */
+.slds-input-has-icon .slds-input {
+  --slds-c-input-spacing-horizontal-start: 0.75rem !important;
 }
