@@ -150,11 +150,11 @@ This project uses **synthetic shadow** to match Salesforce platform behavior. Gl
 
 ## Improvements Over design-system-2-starter-kit
 
-This project extends the official Salesforce [design-system-2-starter-kit](https://github.com/salesforce-ux/design-system-2-starter-kit) with:
+This project extends and enhances the official Salesforce [design-system-2-starter-kit](https://github.com/salesforce-ux/design-system-2-starter-kit) with:
 
-- **AI-enforced SLDS compliance** — Claude Code instructions and hooks automatically enforce SLDS styling rules, component architecture patterns, and documentation requirements at creation time. Components are guaranteed to follow platform conventions without manual review.
+- **AI-enforced SLDS compliance** — Claude Code instructions and hooks automatically enforce SLDS styling rules, component architecture patterns, and documentation requirements at **creation time**. Components are guaranteed to follow platform conventions without manual review.
 - **Claude hooks for build integrity** — Pre-tool hooks ensure Node 20 via nvm before any shell command, post-tool hooks flag missing `.mdx` docs when component files are modified, and prompt hooks trigger the component creation procedure when relevant.
-- **UI Health Check & Fix skills** — Integrated from the `lwc-storybook`, `healthchecks` branch. `/ui-health-check` runs comprehensive audits (accessibility, performance, SLDS compliance, LWC best practices, testing coverage, Storybook integration, security) and `/ui-health-fix` auto-applies fixes with confidence scoring and rollback support.
+- **UI Health Check & Fix skills** — Integrated from the [`lwc-storybook`](https://github.com/SF-BT-NonProd/lwc-storybook), `healthchecks` branch. `/ui-health-check` runs comprehensive audits (accessibility, performance, SLDS compliance, LWC best practices, testing coverage, Storybook integration, security) and `/ui-health-fix` auto-applies fixes with confidence scoring and rollback support.
 - **Storybook 10 integration** — Isolated component development with controls, docs, and visual regression testing alongside the app shell
 - **Three-theme switcher** — SLDS2 - Cosmos, SLDS1 - Lightning Blue, and WES for Experience Cloud (starter kit only had SLDS1/SLDS2 toggle)
 - **MDX documentation** — Every component includes a `.mdx` docs page with live examples and API tables
