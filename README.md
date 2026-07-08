@@ -91,7 +91,7 @@ dex-storybook-next/
 
 ## Theme System
 
-The Storybook toolbar provides and the app shell toggle both provide a 3-theme switcher: SLDS2, SLDS1 and WES for EC.
+The Storybook toolbar provides and the App Shell both provide a 3-theme switcher: SLDS2, SLDS1 and WES for EC.
 
 | Theme | What It Loads |
 |-------|---------------|
