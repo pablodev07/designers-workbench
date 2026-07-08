@@ -14,6 +14,7 @@ import IconTest from 'page/iconTest';
 import Contacts from 'page/contacts';
 import ContactDetail from 'page/contactDetail';
 import Builder from 'page/builder';
+import MyComponents from 'page/myComponents';
 import NotFound from 'page/notFound';
 
 const ROUTE_COMPONENTS = {
@@ -21,6 +22,7 @@ const ROUTE_COMPONENTS = {
     'page-icon-test': IconTest,
     'page-contacts': Contacts,
     'page-contact-detail': ContactDetail,
+    'page-my-components': MyComponents,
     'page-builder': Builder,
 };
 

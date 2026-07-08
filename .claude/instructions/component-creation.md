@@ -203,9 +203,32 @@ import MyButton from 'c/myButton';
 'c-my-button': MyButton,
 ```
 
-### 4. Verify
+### 4. Add to the "My Components" gallery page
 
-Run `npm run storybook` and confirm the component appears in the sidebar.
+Every new component MUST be added to the shared gallery page at `src/modules/page/myComponents/myComponents.html`. This page is already wired into the shell app nav as "My Components" — do NOT create a separate page per component.
+
+Add a new `<lightning-layout-item>` block **above** the `<!-- New components are added above this line -->` comment:
+
+```html
+<lightning-layout-item size="12" class="slds-m-bottom_large">
+    <lightning-card title="My Button">
+        <div class="slds-p-around_medium">
+            <c-my-button label="Default" variant="brand"></c-my-button>
+        </div>
+    </lightning-card>
+</lightning-layout-item>
+```
+
+Showcase representative props/variants so the user sees the component in a meaningful state. If the component has multiple variants, show them side by side.
+
+### 5. Tell the user
+
+After completing all steps above, tell the user:
+
+> **Your component `c-my-button` is ready in two places:**
+>
+> - **Shell app** — run `npm run dev` and navigate to the "My Components" tab in the navbar (port 3000)
+> - **Storybook** — run `npm run storybook` to see it in the component catalog with docs and controls (port 6006)
 
 ### Naming Summary
 
