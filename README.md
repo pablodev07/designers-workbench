@@ -107,8 +107,13 @@ Component creation is handled by **Claude Code** via `.claude/instructions/compo
 
 - Scaffolds all files (`.js`, `.html`, `.css`, `.stories.js`, `.mdx`)
 - Registers the component in `.storybook/components.js`
+- Adds the component to the **"My Components" gallery page** in the Shell App
 - Applies the correct styling patterns and SLDS conventions
 - Generates Storybook stories with controls and documentation
+
+New components appear in **two places**:
+- **Shell App** (`npm run dev`, port 3000) — navigate to the "My Components" tab in the navbar
+- **Storybook** (`npm run storybook`, port 6006) — in the component catalog with docs and controls
 
 Components live in `src/modules/c/<camelCaseName>/`:
 
