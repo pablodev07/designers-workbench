@@ -58,6 +58,7 @@ Other module namespaces:
 3. **Use SLDS styling hooks** (`--slds-c-*` at `:host`) for visual customization beyond variants
 4. **Never use `!important`**, hard-coded colors, or direct SLDS class overrides
 5. **Always prefer Lightning Base Components** over raw HTML
+6. **Verify SLDS class names exist** before using them — grep `public/css/` to confirm any `slds-` class you write actually exists in the project's design system CSS files. Do not assume class names from naming conventions alone.
 
 ## Running
 
