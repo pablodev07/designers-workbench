@@ -107,10 +107,15 @@ Applies fixes using specialized fixers:
 
 ### Phase 3: Validation
 After applying fixes:
-- Runs ESLint to ensure no new linting errors
-- Compiles LWC components to verify syntax
-- Runs existing Jest tests to ensure no regressions
-- If validation fails, changes are rolled back automatically
+- **First, check if Storybook (port 6006) or the dev server (port 3000) is already running** (e.g., `lsof -i :6006`). If either is running:
+  - Do NOT attempt to compile or build — HMR will apply changes automatically
+  - Inform the user: "Changes applied. Your running Storybook/dev server has already picked them up via HMR — check it visually to confirm."
+  - Skip directly to Phase 4 (Reporting)
+- If no dev server is running:
+  - Runs ESLint to ensure no new linting errors
+  - Compiles LWC components to verify syntax
+  - Runs existing Jest tests to ensure no regressions
+  - If validation fails, changes are rolled back automatically
 
 ### Phase 4: Reporting
 Generates a fix summary:
