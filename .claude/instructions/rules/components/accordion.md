@@ -81,6 +81,8 @@ Accordions are most useful when you want only one section of content to be visib
 | Modifier | true |
 | | |
 
+> **Important:** When using `<lightning-accordion>` and `<lightning-accordion-section>`, do NOT write custom CSS for icon rotation or animation. The base component handles chevron icon state (collapsed/expanded) internally. Adding `transform: rotate()` or `transition` on the icon will conflict with or duplicate the built-in behavior.
+
 | | |
 |-------|-------|
 | Selector | `.slds-accordion__content` |
