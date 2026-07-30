@@ -111,9 +111,10 @@ Component creation is handled by **Claude Code** via `.claude/instructions/compo
 - Applies the correct styling patterns and SLDS conventions
 - Generates Storybook stories with controls and documentation
 
-New components appear in **two places**:
+New components appear in **two places** (with an optional third):
 - **Shell App** (`npm run dev`, port 3000) — navigate to the "My Components" tab in the navbar
 - **Storybook** (`npm run storybook`, port 6006) — in the component catalog with docs and controls
+- **Figma** (optional) — use `/slds-figma-mockups` to push the component to a high-fidelity SLDS 2 Figma mockup (requires Figma MCP authentication)
 
 Components live in `src/modules/c/<camelCaseName>/`:
 
@@ -168,6 +169,28 @@ This project extends and enhances the official Salesforce [design-system-2-start
 - **WES theme support** — Full WES for Experience Cloud theming with font token extraction, wrapper classes, and override patches for upstream npm deficiencies
 - **Unified config** — Single `vite.config.js` consumed by both Vite and Storybook's builder, eliminating config drift
 
+## SLDS Figma Mockups Skill (Integrated)
+
+This project includes a full copy of the **slds-figma-mockups** skill, located in `.claude/instructions/slds-figma-mockups/`. It teaches Claude how to build Salesforce Lightning page mockups in Figma using real SLDS 2 library instances and design tokens.
+
+| Command | Purpose |
+|---------|---------|
+| `/slds-figma-mockups` | Build a Salesforce page mockup in Figma (Account, Opportunity, Quote, Case, Asset, or custom) |
+
+**What it provides:**
+- **219 component import keys** — instantiate real SLDS 2 Figma library components
+- **30+ semantic color tokens** — bound Figma variables, never hardcoded hex
+- **23 text styles** — library text styles, never hardcoded font sizes
+- **5 object-specific page blueprints** — correct layout, sidebar order, chrome configuration
+- **Composition & sizing rules** — auto-layout, swap patterns, column templates
+- **Component selection cheatsheet** — maps UI needs to SLDS 2 components
+
+**Code-side benefit:** The design token reference guides (spacing scale, border radius, shadows, typography, color balance) are also used during component creation to ensure correct values in CSS/LWC code.
+
+**Prerequisite:** Requires Figma MCP plugin authentication. Run `/figma-use` to verify connectivity before building mockups.
+
+**Credit:** Created by Pascal Mercier (pmercier@salesforce.com).
+
 ## UI Health Check Skills
 
 This project integrates the health check skills from the [`lwc-storybook/healthchecks`](https://github.com/SF-BT-NonProd/lwc-storybook/tree/healthchecks) branch, located in `public/skills/`:
@@ -188,6 +211,8 @@ This project integrates the health check skills from the [`lwc-storybook/healthc
 ```
 
 The skills are design-system-aware and validate against SLDS2, SLDS1, and WES standards depending on context.
+
+**Credit:** Created by Damilare Olowoniyi (dolowoniyi@salesforce.com).
 
 ## Prerequisites
 
