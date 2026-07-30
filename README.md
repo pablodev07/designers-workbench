@@ -1,6 +1,6 @@
 ![DEX Storybook Next](/public/images/storybooknextreadme.png)
 
-A unified **Lightning Web Components workbench** that combines a runnable app shell with a Storybook 10 component catalog. Components are authored once and tested in both contexts — as isolated stories with visual controls and as mounted elements in a full LWC application.
+A unified **Lightning Web Components workbench** that combines a runnable app shell with a Storybook 10 component catalog. Components are authored once and tested in both contexts — as isolated stories with visual controls and as mounted elements in a full LWC application. As an extra step, you can take the coded component back to Figma.
 
 Built with **LWC 9**, **Vite**, **Storybook 10**, and **lightning-base-components**. Supports three design system themes: **SLDS2 - Cosmos**, **SLDS1 - Lightning Blue**, and **WES for Experience Cloud**.
 
@@ -161,6 +161,7 @@ This project extends and enhances the official Salesforce [design-system-2-start
 - **AI-enforced SLDS compliance** — Claude Code instructions and hooks automatically enforce SLDS styling rules, component architecture patterns, and documentation requirements at **creation time**. Components are guaranteed to follow platform conventions without manual review.
 - **Claude hooks for build integrity** — Pre-tool hooks ensure Node 20 via nvm before any shell command, post-tool hooks flag missing `.mdx` docs when component files are modified, and prompt hooks trigger the component creation procedure when relevant.
 - **UI Health Check & Fix skills** — Integrated from the [`lwc-storybook`](https://github.com/SF-BT-NonProd/lwc-storybook), `healthchecks` branch. `/ui-health-check` runs comprehensive audits (accessibility, performance, SLDS compliance, LWC best practices, testing coverage, Storybook integration, security) and `/ui-health-fix` auto-applies fixes with confidence scoring and rollback support.
+- **SLDS Figma Mockups Skill** — Integrated from [`slds-figma-mockups-skill`](https://github.com/salesforce-ux-emu/slds-figma-mockups-skill). Provides 219 SLDS 2 component keys, semantic color/text tokens, page-level blueprints (Account, Opportunity, Quote, Case, Asset), and composition rules. Used both for Figma mockup generation (`/slds-figma-mockups`) and as the design token reference during code-side component creation.
 - **Storybook 10 integration** — Isolated component development with controls, docs, and visual regression testing alongside the app shell
 - **Three-theme switcher** — SLDS2 - Cosmos, SLDS1 - Lightning Blue, and WES for Experience Cloud (starter kit only had SLDS1/SLDS2 toggle)
 - **MDX documentation** — Every component includes a `.mdx` docs page with live examples and API tables
