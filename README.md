@@ -171,7 +171,7 @@ This project extends and enhances the official Salesforce [design-system-2-start
 
 ## SLDS Figma Mockups Skill (Integrated)
 
-This project includes a full copy of the **slds-figma-mockups** skill, located in `.claude/instructions/slds-figma-mockups/`. It teaches Claude how to build Salesforce Lightning page mockups in Figma using real SLDS 2 library instances and design tokens.
+This project includes a full copy of the [`slds-figma-mockups`](https://github.com/salesforce-ux-emu/slds-figma-mockups-skill) skill, located in `.claude/instructions/slds-figma-mockups/`. It teaches Claude how to build Salesforce Lightning page mockups in Figma using real SLDS 2 library instances and design tokens.
 
 | Command | Purpose |
 |---------|---------|
