@@ -60,6 +60,14 @@ Other module namespaces:
 5. **Always prefer Lightning Base Components** over raw HTML
 6. **Verify SLDS class names exist** before using them — grep `public/css/` to confirm any `slds-` class you write actually exists in the project's design system CSS files. Do not assume class names from naming conventions alone.
 
+### SLDS 2 Design Token Reference
+
+Concrete spacing, radius, shadow, color, and typography values are documented in `.claude/instructions/slds-figma-mockups/guides/reference/`. Consult these when making styling decisions — do not guess values.
+
+### Figma Mockups Skill (Integrated)
+
+This project includes the **slds-figma-mockups** skill at `.claude/instructions/slds-figma-mockups/`. Invoke it with `/slds-figma-mockups` to build Salesforce page mockups in Figma using real SLDS 2 component instances, tokens, and page blueprints.
+
 ## Running
 
 ```bash
