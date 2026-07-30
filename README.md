@@ -191,7 +191,7 @@ This project includes a full copy of the **slds-figma-mockups** skill, located i
 
 **Credit:** Created by Pascal Mercier (pmercier@salesforce.com).
 
-## UI Health Check Skills
+## UI Health Check Skills (Integrated)
 
 This project integrates the health check skills from the [`lwc-storybook/healthchecks`](https://github.com/SF-BT-NonProd/lwc-storybook/tree/healthchecks) branch, located in `public/skills/`:
 
