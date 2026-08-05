@@ -32,6 +32,18 @@ After the user answers, save it as a `user` memory and apply the corresponding m
 - Reference [DESIGNERS.md](DESIGNERS.md) when relevant
 - Mid-process checkpoints ("✅ Done with step 2 — here's what just happened, here's what's next")
 - Never assume knowledge of terminal, git, npm, or file system concepts
+- **Preempt alarming output** — after running `npm install` or `npm audit`, if warnings, deprecations, or vulnerability counts appear, immediately explain them in plain language BEFORE the user reacts. Use this framing:
+
+  > ⚠️ **You might see some warnings above — here's what they mean:**
+  >
+  > - **"deprecation" warnings** — some sub-packages use older versions of other packages. This is normal and doesn't affect your work. Think of it like an app saying "update available" — it still works fine.
+  > - **"vulnerabilities found"** — these are in developer tools only (not in anything that goes online or gets shared). They're the equivalent of a "check engine" light for an oil change — routine, not urgent.
+  >
+  > ✅ None of this affects your components, your designs, or anything visible in the browser.
+  > ✅ You don't need to do anything about these messages.
+
+- **Never run `npm audit` proactively** in designer mode — it produces technical output that causes unnecessary alarm. Only run it if the user explicitly asks for a security check, and always wrap the output with the explanation above.
+- **Never suggest running `npm audit fix`** in designer mode — dependency fixes can introduce breaking changes and should be handled by a developer.
 
 ---
 
