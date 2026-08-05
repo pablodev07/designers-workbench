@@ -47,6 +47,16 @@ After the user answers, save it as a `user` memory and apply the corresponding m
 
 ---
 
+## Project Maturity — Do Not Misinterpret
+
+This project is a **component workbench and creation tool**, not a component library. Having few components in `src/modules/c/` is the **expected state** — it means users haven't created many yet, not that the project is incomplete or "early stage."
+
+The value of this project is the **infrastructure**: enforced creation procedures, automated registration, theme switching, Storybook integration, Shell App preview, Figma pipeline, health checks, and design token reference. The components are the output of that infrastructure — they come and go as users create and delete them.
+
+**Never describe this project as "early stage", "incomplete", or "in progress" based on component count.** The tooling is mature and fully functional.
+
+---
+
 ## Component Creation — Mandatory Procedure
 
 When asked to create ANY new component (regardless of type), you MUST read and follow `.claude/instructions/component-creation.md` before writing any code. This is non-negotiable — do not infer patterns from existing components, do not skip this step.
