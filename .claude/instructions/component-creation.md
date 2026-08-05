@@ -262,20 +262,114 @@ Add a new `<lightning-layout-item>` block **above** the `<!-- New components are
 
 Showcase representative props/variants so the user sees the component in a meaningful state. If the component has multiple variants, show them side by side.
 
-### 5. Tell the user
+### 5. Pre-creation announcement (designer mode only)
 
-After completing all steps above, tell the user:
+**Before writing any files**, if the user is in designer mode, announce what's about to happen:
 
-> **Your component `c-my-button` is ready in two places:**
+> ┌─────────────────────────────────────────────────────┐
+> │  🎨 CREATING YOUR COMPONENT                         │
+> │                                                     │
+> │  I'm about to create 5 new files for your           │
+> │  component. I'll ask permission before writing       │
+> │  each one — just accept when prompted.              │
+> │                                                     │
+> │  ✅ Nothing is deleted or overwritten                │
+> │  ✅ You can stop me at any point                     │
+> │  ✅ Everything stays on your machine only            │
+> └─────────────────────────────────────────────────────┘
 >
-> - **Shell app** — run `npm run dev` and navigate to the "My Components" tab in the navbar (port 3000)
-> - **Storybook** — run `npm run storybook` to see it in the component catalog with docs and controls (port 6006)
+> **Files I'll create:**
+> 1. Logic file (`.js`) — the component's behavior
+> 2. Template file (`.html`) — the visual structure
+> 3. Styles file (`.css`) — spacing and appearance
+> 4. Stories file (`.stories.js`) — the Storybook preview
+> 5. Docs file (`.mdx`) — the documentation page
 >
-> **Take it to Figma (optional):**
+> Plus I'll register it in the catalog and add it to the gallery page.
 >
-> You can also push this component to a Figma mockup using `/slds-figma-mockups`. This will build a high-fidelity SLDS 2 representation in Figma using real library instances and design tokens — useful for design reviews, handoffs, or composing it into a full page layout.
+> Ready? I'll ask permission for each file as I go. 🚀
+
+Then proceed with creation. If the user stops the process at any point, immediately:
+1. Tell them what has been completed so far and what remains
+2. Ask why they stopped and if they have questions
+3. Offer to continue, undo what was done, or adjust the approach
+
+### 6. First-time setup check (designer mode only)
+
+After component creation is complete, check if the project has been set up. If `node_modules/` doesn't exist or the user has never run the project in this session, present the setup steps:
+
+> ┌─────────────────────────────────────────────────────┐
+> │  🔧 FIRST-TIME SETUP                                │
+> │                                                     │
+> │  Before you can preview your component, the          │
+> │  project needs a one-time setup. This downloads      │
+> │  the design system files and tools it depends on.    │
+> │                                                     │
+> │  ✅ Only happens once                                │
+> │  ✅ Takes 1-2 minutes                                │
+> │  ✅ Nothing installs globally — stays in this folder │
+> └─────────────────────────────────────────────────────┘
 >
-> **Requirement:** The Figma MCP plugin must be connected and authenticated. If you haven't set it up, Claude will prompt you to authenticate when you invoke the command. You can also verify Figma connectivity beforehand by running `/figma-use`.
+> **What we'll run:**
+>
+> | Command | What it does |
+> |---------|--------------|
+> | `nvm use` | Switches to the correct Node.js version (v20) — like choosing the right app version |
+> | `npm install` | Downloads all design system packages into a local folder — like syncing a Figma library |
+>
+> I can run these for you right now, or you can type them yourself. Which do you prefer?
+
+If `node_modules/` already exists, skip this step entirely.
+
+### 7. Tell the user
+
+After completing all steps above, tell the user how to see their component. Adapt the language to the user's experience level.
+
+**For designers / non-technical users:**
+
+> ┌─────────────────────────────────────────────────────┐
+> │  ✅ YOUR COMPONENT IS READY!                         │
+> │                                                     │
+> │  Here's how to see it in your browser.               │
+> └─────────────────────────────────────────────────────┘
+>
+> **Option A — Component catalog (recommended for reviewing):**
+> ```
+> npm run storybook
+> ```
+> 🔍 This opens a visual catalog at **http://localhost:6006** where you can browse your component, switch themes, and tweak its properties with controls.
+>
+> **Option B — Full app preview:**
+> ```
+> npm run dev
+> ```
+> 🖥️ This opens a Salesforce-like app at **http://localhost:3000**. Navigate to "My Components" to see it in a real page layout.
+>
+> **How to run these:**
+> - You can type the command in a new terminal session yourself, OR
+> - Ask me to run it right here in this session — just say "run storybook" or "run the app" and I'll start it for you
+>
+> Both are local and safe — press **Ctrl+C** to stop at any time. Nothing goes online. 🔒
+>
+> ---
+>
+> **🎨 Want to take it to Figma?**
+>
+> I can push this component to Figma as a real SLDS 2 library instance — not a screenshot, but an actual component from the design system library.
+>
+> **Before we do that, here's what you need:**
+> - ⚠️ **Figma MCP plugin** must be authenticated (I'll guide you if it's not set up)
+> - ⚠️ **Full Seat recommended** — a View Seat only allows 6 Figma calls per month, which limits what we can do. A Full Seat has no practical limit.
+>
+> Want to push it to Figma, adjust the component, or are you happy with it? 🚀
+
+**For developers (concise):**
+
+> **Your component `c-my-button` is ready:**
+>
+> - **Storybook** — `npm run storybook` → port 6006 (docs + controls)
+> - **Shell app** — `npm run dev` → port 3000 ("My Components" tab)
+> - **Figma** (optional) — `/slds-figma-mockups` to push as SLDS 2 library instance (requires Figma MCP auth + Full Seat recommended)
 
 ### Naming Summary
 

@@ -1,5 +1,40 @@
 # DEX Storybook Next
 
+## User Profile — Ask Once, Remember Always
+
+**On first interaction in this project**, if there is no stored user profile memory (check memory for a `user` type entry with profile info), you MUST ask:
+
+> Before we begin — are you a **developer** or a **designer / non-technical user**?
+>
+> This helps me adjust how I communicate and assist you in the DEX Storybook project only. It won't change what I'm capable of — just how I present information and guide you through steps. This preference is saved as a project-level memory and only applies here.
+
+After the user answers, save it as a `user` memory and apply the corresponding mode:
+
+### Developer mode (default)
+- Concise output, no hand-holding
+- Commands without explanation unless asked
+- Technical terminology as-is
+
+### Designer mode
+- Longer, more explanatory responses
+- Use emojis to aid visual scanning and tone (✅ for success, ⚠️ for caution, 🎨 for design notes, 🚀 for progress, etc.)
+- Every command explained before running (what it does, why, safe/reversible)
+- ASCII step callouts for multi-step processes:
+  ```
+  ┌─────────────────────────────────────┐
+  │  🎨 STEP TITLE                      │
+  │                                     │
+  │  What's happening and what to do    │
+  │  ✅ Safety note                     │
+  └─────────────────────────────────────┘
+  ```
+- Proactive reassurance ("this is safe ✅", "nothing leaves your machine 🔒", "press Ctrl+C to stop ⏹️")
+- Reference [DESIGNERS.md](DESIGNERS.md) when relevant
+- Mid-process checkpoints ("✅ Done with step 2 — here's what just happened, here's what's next")
+- Never assume knowledge of terminal, git, npm, or file system concepts
+
+---
+
 ## Component Creation — Mandatory Procedure
 
 When asked to create ANY new component (regardless of type), you MUST read and follow `.claude/instructions/component-creation.md` before writing any code. This is non-negotiable — do not infer patterns from existing components, do not skip this step.
