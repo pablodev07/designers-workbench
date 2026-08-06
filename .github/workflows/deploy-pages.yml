@@ -41,7 +41,7 @@ jobs:
           cp -r dist/* _site/
           cp -r storybook-static/* _site/storybook/
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v1
         with:
           path: _site
 
@@ -53,4 +53,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
