@@ -49,11 +49,59 @@ function salesforceShimsPlugin() {
   };
 }
 
+function restoreCssForNonLwcPlugin() {
+  const saved = {};
+  return [
+    {
+      name: 'save-css-transforms',
+      enforce: 'pre',
+      configResolved: {
+        order: 'pre',
+        handler(resolvedConfig) {
+          for (const target of ['vite:css', 'vite:css-post']) {
+            const plugin = resolvedConfig.plugins.find(p => p.name === target);
+            if (!plugin?.transform) continue;
+            saved[target] = {
+              filter: plugin.transform.filter,
+              handler: plugin.transform.handler || plugin.transform,
+            };
+          }
+        },
+      },
+    },
+    {
+      name: 'restore-css-for-non-lwc',
+      enforce: 'post',
+      configResolved(resolvedConfig) {
+        for (const target of ['vite:css', 'vite:css-post']) {
+          const plugin = resolvedConfig.plugins.find(p => p.name === target);
+          const orig = saved[target];
+          if (!plugin || !orig?.handler) continue;
+          const wrappedHandler = function (code, id, ...args) {
+            if (
+              id.includes('lightning-base-components') ||
+              id.includes('src/modules/') ||
+              id.includes('@lwc/') ||
+              id.includes('?import') ||
+              id.includes('?scoped')
+            ) return;
+            return orig.handler.call(this, code, id, ...args);
+          };
+          plugin.transform = orig.filter
+            ? { filter: orig.filter, handler: wrappedHandler }
+            : wrappedHandler;
+        }
+      },
+    },
+  ];
+}
+
 export default defineConfig({
   base: './',
   plugins: [
     salesforceShimsPlugin(),
     suppressLbcWarningsPlugin(),
+    restoreCssForNonLwcPlugin(),
     resolveIconTemplatesPlugin(),
     lwc({
       modules: [

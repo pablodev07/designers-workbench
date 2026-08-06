@@ -196,3 +196,78 @@ This project extends the official Salesforce [design-system-2-starter-kit](https
 | Card headers disappearing under WES | `wes-overrides.css` must load after WES bundle |
 | `gate.isOpen is not a function` | `salesforceShimsPlugin` in `vite.config.js` handles this |
 | Icon template parse errors | `icon-templates.js` plugin redirects to pre-compiled shims |
+
+### Production Build Compatibility (`vite-plugin-lwc` + Vite 7)
+
+Dev mode (`npm run dev`, `npm run storybook`) works without issues, but production builds require workarounds for three conflicts between `vite-plugin-lwc` v4.1.0 and Vite 7. These fixes live in `vite.config.js` and `.storybook/main.ts`.
+
+#### Problem 1: `lwc:alias` rewrites all `.html` imports
+
+**Symptom**: `npm run build-storybook` fails with:
+```
+iframe.html?import (1:0): Expression expected
+(Note that you need plugins to import files that are not JavaScript)
+```
+
+**Cause**: The `lwc:alias` plugin appends `?import` to every non-index `.html` file during build. Storybook's `iframe.html` entry point gets caught by the regex `/^(?!.*index)(.*)\.html$/`, causing Rollup to parse HTML as JavaScript.
+
+**Fix** (in `.storybook/main.ts` `viteFinal`): Override `lwc:alias`'s `config()` hook with a narrower regex that also excludes `iframe`:
+```ts
+if (p.name === 'lwc:alias') {
+  p.config = () => ({
+    resolve: {
+      alias: [{ find: /^(?!.*index)(?!.*iframe)(.*)\.html$/, replacement: '$1.html?import' }],
+    },
+  });
+}
+```
+
+#### Problem 2: `lwc:patch-plugins` disables Vite's CSS pipeline
+
+**Symptom**: `npm run build` fails with:
+```
+public/loading.css (1:5): Expected ';', '}' or <eof>
+(Note that you need plugins to import files that are not JavaScript)
+```
+Or for Storybook:
+```
+iframe.html?html-proxy&inline-css&index=0.css (2:17): Expected ';', '}' or <eof>
+```
+
+**Cause**: `vite-plugin-lwc` completely removes `vite:css` and `vite:css-post` transform hooks (sets them to `undefined`) because LWC components handle CSS internally via the compiler. This breaks all non-LWC CSS processing — inline styles in HTML entries, `<link>` tag references, etc.
+
+**Fix** (in `vite.config.js` for app shell, `.storybook/main.ts` for Storybook): Save the original CSS transform before `lwc:patch-plugins` destroys it, then restore it afterwards with a wrapper that skips LWC-owned files. Critical detail: in Vite 7, CSS transforms use a `{ filter, handler }` object structure — restoring as a bare function loses the filter metadata and causes Vite to call the CSS handler on *every* module (including JS), corrupting the output.
+
+```js
+// Must preserve { filter, handler } structure:
+plugin.transform = origFilter
+  ? { filter: origFilter, handler: wrappedHandler }
+  : wrappedHandler;
+```
+
+The wrapper skips files matching: `lightning-base-components`, `src/modules/`, `@lwc/`, `?import`, `?scoped`.
+
+#### Problem 3: `lwc:vite-plugin` compiles all `.html` as LWC templates
+
+**Symptom**: After fixing Problem 1, Storybook build fails with:
+```
+[lwc:vite-plugin] iframe.html (6:5): LWC1075: Multiple roots found
+```
+
+**Cause**: The LWC vite plugin's `createFilter` exclude list has `"index.html"` hardcoded but not `"iframe.html"`. Storybook's entry gets picked up by the LWC template compiler.
+
+**Fix** (in `.storybook/main.ts` `viteFinal`): Wrap the plugin's `transform` and `load` hooks to skip `iframe.html`:
+```ts
+if (p.name === 'lwc:vite-plugin') {
+  const origTransform = p.transform;
+  p.transform = function (code, id, options) {
+    if (id.includes('iframe.html')) return;
+    return origTransform?.call(this, code, id, options);
+  };
+  // Same for p.load
+}
+```
+
+#### When to revisit
+
+If `vite-plugin-lwc` releases a version with native Storybook/Vite 7 compatibility (check their changelog for mentions of `vite:css`, `iframe.html`, or Storybook support), the workarounds in `restoreCssForNonLwcPlugin()` and the `viteFinal` patches can be removed.

@@ -1,15 +1,15 @@
-import type { Preview } from '@storybook/web-components';
+import type { Preview } from '@storybook/web-components-vite';
 import './components.js';
 import { sldsTheming, themeGlobalTypes } from './sldsTheming.js';
 
 if (typeof window !== 'undefined') {
   window.SLDS = window.SLDS || {};
-  window.SLDS.iconSvgPath = '/assets/icons/';
+  window.SLDS.iconSvgPath = './assets/icons/';
 
   window.SDS = window.SDS || {};
-  window.SDS.iconPath = '/assets/icons/';
+  window.SDS.iconPath = './assets/icons/';
   window.SDS.icons = window.SDS.icons || {};
-  window.SDS.icons.basePath = '/assets/icons/';
+  window.SDS.icons.basePath = './assets/icons/';
 }
 
 const preview: Preview = {

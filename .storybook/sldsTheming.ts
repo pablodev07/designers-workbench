@@ -1,11 +1,11 @@
-import type { Decorator } from '@storybook/web-components';
+import type { Decorator } from '@storybook/web-components-vite';
 import type { GlobalTypes } from 'storybook/internal/types';
 import { html } from 'lit';
 
 const themeFiles: Record<string, string[]> = {
-  sldsplus: ['/css/slds-font-tokens.css', '/slds/salesforce-lightning-design-system.min.css', '/css/lwc-base-fixes.css'],
-  ds2: ['/ds2/slds2.cosmos.css', '/css/lwc-base-fixes.css'],
-  wes: ['/css/slds-font-tokens.css', '/css/wes-for-ec-offline.css', '/css/wes-overrides.css', '/css/lwc-base-fixes.css'],
+  sldsplus: ['./css/slds-font-tokens.css', './slds/salesforce-lightning-design-system.min.css', './css/lwc-base-fixes.css'],
+  ds2: ['./ds2/slds2.cosmos.css', './css/lwc-base-fixes.css'],
+  wes: ['./css/slds-font-tokens.css', './css/wes-for-ec-offline.css', './css/wes-overrides.css', './css/lwc-base-fixes.css'],
 };
 
 const themeWrapperClasses: Record<string, string> = {
