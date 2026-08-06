@@ -156,3 +156,50 @@ npm run build-storybook
 
 - Node.js 20+ (use `.nvmrc`: `nvm use`)
 - npm
+
+---
+
+## GitHub Pages Hosting — Security Guidelines
+
+Deploying this project's build output (`npm run build-storybook` or `npm run build`) to **GitHub Pages is safe and explicitly allowed** by Salesforce Enterprise Security policy.
+
+### Policy Basis
+
+| Source | What it says |
+|--------|-------------|
+| [Security Requirements for GitHub](https://confluence.internal.salesforce.com/spaces/SECURITY/pages/20124646/Security+Requirements+for+GitHub) | *"Private pages enforce access control by who has access to the repository. This means any internal visibility repository can share content with the rest of the Salesforce Enterprise."* Private Pages are allowed; public Pages require a separate review. |
+| [Security Requirements for Enterprise Administrators and Organization Owners](https://confluence.internal.salesforce.com/spaces/SECURITY/pages/667752507/Security+Requirements+for+Enterprise+Administrators+and+Organization+Owners) | *"Public pages must not be allowed on Github EMU."* and *"Github Pages must not be used for hosting binaries/dependencies."* Static prototypes and Storybook builds are fine. |
+| [T&P Docs: Publish a UDP Unmanaged Site](https://docs.internal.salesforce.com/write/dx/publish/publish-unmanaged/) | GitHub Pages is an officially documented internal publishing path. |
+
+### What This Means in Practice
+
+- Pages are **private by default** — only authenticated org members (~28,700 Salesforce employees) can view them.
+- **Public pages are blocked** at the org level — you cannot accidentally make a page public.
+- **HTTPS is enforced** on all Pages sites.
+- There is no per-repo audience restriction on private Pages. All org members can see any private Page.
+
+### Safe to Deploy
+
+- Static prototypes (HTML, CSS, JS)
+- Storybook builds (component catalogs)
+- Documentation sites
+- Design system explorations
+
+### Never Deploy
+
+- **API keys, tokens, or credentials** — not in source code, not in environment variables baked into the build, not in config files
+- **Customer data** or org-specific PII
+- **References to live Salesforce environments** (org URLs, instance endpoints, session IDs)
+- **Binaries or package dependencies** — these must go through Nexus/Artifactory per policy
+- **Anything that connects to external services at runtime** (fetch calls to third-party APIs, analytics scripts, tracking pixels)
+
+### Deploying
+
+1. Build: `npm run build-storybook` (or `npm run build` for the shell app)
+2. Push output to a `gh-pages` branch or configure GitHub Actions
+3. Enable Pages in repo Settings → Pages → select the branch
+4. Use **Enterprise Library GitHub Actions only** — third-party actions are blocked
+
+### If You Need Restricted Access
+
+GitHub Pages does not support per-team or per-person access control — it's all-or-nothing across the org. If your content requires narrower visibility, use **Cloud Hosting** (Salesforce internal) which provides file-level authorization and access auditing.
