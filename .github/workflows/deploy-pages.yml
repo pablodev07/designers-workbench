@@ -28,12 +28,12 @@ jobs:
       - run: npm ci
 
       - name: Build App Shell
-        run: npm run build -- --base=/dex-storybook-next/
+        run: npm run build -- --base=/
 
       - name: Build Storybook
         run: npm run build-storybook
         env:
-          STORYBOOK_BASE: /dex-storybook-next/storybook/
+          STORYBOOK_BASE: /storybook/
 
       - name: Assemble site
         run: |
