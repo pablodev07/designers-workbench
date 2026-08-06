@@ -1,5 +1,13 @@
 ![DEX Storybook Next](/public/images/storybooknextreadme.png)
 
+> **⚠️ This repository has moved.**
+>
+> DEX Storybook Next is now actively maintained at **[salesforce-ux-emu/dex-storybook-next](https://github.com/salesforce-ux-emu/dex-storybook-next)**. Please use that repo for the latest updates, new issues, and pull requests.
+>
+> This SF-BT-NonProd copy is kept only as a historical/archive reference and is no longer updated.
+>
+> **Why the move?** The `salesforce-ux-emu` org supports self-service repo creation, forking, and GitHub Pages, making it easier for anyone to fork this workbench and deploy their own live version.
+
 # DEX Storybook Next
 
 A **component workbench for Salesforce Lightning** — build, preview, document, and push components across code, browser, and Figma.
