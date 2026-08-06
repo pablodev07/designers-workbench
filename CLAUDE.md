@@ -195,10 +195,38 @@ Deploying this project's build output (`npm run build-storybook` or `npm run bui
 
 ### Deploying
 
-1. Build: `npm run build-storybook` (or `npm run build` for the shell app)
-2. Push output to a `gh-pages` branch or configure GitHub Actions
-3. Enable Pages in repo Settings → Pages → select the branch
-4. Use **Enterprise Library GitHub Actions only** — third-party actions are blocked
+This project uses the `gh-pages` branch approach (no custom GitHub Actions workflow). The `salesforce-ux-emu` org lacks reliable hosted runners for private repos, so avoid `build_type: "workflow"` — use `build_type: "legacy"` with a static branch.
+
+**Pages configuration** (already set):
+- Source: `gh-pages` branch, `/` path
+- Build type: `legacy`
+- URL: `https://studious-fiesta-v63ooy5.pages.github.io/`
+
+**To redeploy**:
+
+```bash
+# Build both targets
+npm run build
+npm run build-storybook
+
+# Assemble and push to gh-pages
+rm -rf _site && mkdir -p _site/storybook
+cp -r dist/* _site/
+cp -r storybook-static/* _site/storybook/
+cd _site
+git init && git checkout -b gh-pages
+git add -A && git commit -m "deploy: app shell + storybook catalog"
+git remote add origin https://github.com/salesforce-ux-emu/dex-storybook-next.git
+git push origin gh-pages --force
+```
+
+The built-in `pages-build-deployment` workflow triggers automatically and deploys in ~40 seconds.
+
+**Live URLs**:
+- App Shell: `https://studious-fiesta-v63ooy5.pages.github.io/`
+- Storybook: `https://studious-fiesta-v63ooy5.pages.github.io/storybook/`
+
+**Do NOT** add a custom GitHub Actions workflow for Pages deployment — concurrent workflows competing for the same runner pool cause concurrency deadlocks that stall deployments for 15+ minutes until timeout.
 
 ### If You Need Restricted Access
 
