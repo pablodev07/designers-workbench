@@ -185,6 +185,42 @@ This project extends the official Salesforce [design-system-2-starter-kit](https
 
 ---
 
+## Deployment (GitHub Pages)
+
+The project is deployed to GitHub Pages via a `gh-pages` branch containing pre-built static output. No custom GitHub Actions workflow is used — the org's limited hosted runners cause concurrency deadlocks with custom workflows.
+
+### Live URLs
+
+| Site | URL |
+|------|-----|
+| App Shell | [studious-fiesta-v63ooy5.pages.github.io/](https://studious-fiesta-v63ooy5.pages.github.io/) |
+| Storybook | [studious-fiesta-v63ooy5.pages.github.io/storybook/](https://studious-fiesta-v63ooy5.pages.github.io/storybook/) |
+
+Access is org-internal only (authenticated Salesforce employees).
+
+### Publishing an update
+
+```bash
+npm run build
+npm run build-storybook
+
+rm -rf _site
+mkdir -p _site/storybook
+cp -r dist/* _site/
+cp -r storybook-static/* _site/storybook/
+
+cd _site
+git init && git checkout -b gh-pages
+git add -A && git commit -m "Deploy"
+git remote add origin git@github.com:salesforce-ux-emu/dex-storybook-next.git
+git push origin gh-pages --force
+cd ..
+```
+
+The built-in `pages-build-deployment` workflow picks up the branch automatically. Do **not** add a custom Actions workflow — it will compete for runners and stall.
+
+---
+
 ## Troubleshooting
 
 | Symptom | Fix |

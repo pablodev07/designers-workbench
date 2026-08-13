@@ -18,7 +18,20 @@ For the project overview, see [README.md](README.md).
 
 ## Exploring Components
 
-### Storybook (the catalog)
+### Live on GitHub Pages (no setup needed)
+
+The latest published build is available online — no terminal, no installs, nothing to run:
+
+| What | URL |
+|------|-----|
+| **Storybook** (component catalog) | [studious-fiesta-v63ooy5.pages.github.io/storybook/](https://studious-fiesta-v63ooy5.pages.github.io/storybook/) |
+| **Shell App** (full Salesforce-like app) | [studious-fiesta-v63ooy5.pages.github.io/](https://studious-fiesta-v63ooy5.pages.github.io/) |
+
+These are private to the Salesforce org — only authenticated employees can view them.
+
+Use these links to browse components, switch themes, and review visual output without any local setup. If you need to iterate on a component with Claude (create, modify, test), you'll still need the local setup below.
+
+### Storybook (local catalog)
 
 Open your browser to **http://localhost:6006** (after a developer runs `npm run storybook`).
 
@@ -30,7 +43,7 @@ Open your browser to **http://localhost:6006** (after a developer runs `npm run 
 
 No terminal commands needed once it's running. Just browse.
 
-### Shell App (the full experience)
+### Shell App (local full experience)
 
 Open **http://localhost:3000** (after `npm run dev`).
 

@@ -95,12 +95,19 @@ Every component must render correctly under **three design systems** (switchable
 
 ### Component Structure
 
-Components go in `src/modules/c/<componentName>/` with files:
-- `<componentName>.js` — LWC class
-- `<componentName>.html` — Template
-- `<componentName>.css` — Scoped styles
-- `<componentName>.stories.js` — Storybook stories
-- `<componentName>.mdx` — Documentation
+Components go in `src/modules/c/<componentName>/` with this structure:
+```
+src/modules/c/<componentName>/
+├── <componentName>.js          — LWC class
+├── <componentName>.html        — Template
+├── <componentName>.css         — Scoped styles
+├── <componentName>.js-meta.xml — Salesforce org metadata (API version, targets)
+└── __docs__/
+    ├── <componentName>.stories.js — Storybook stories
+    └── <componentName>.mdx        — Documentation
+```
+
+The component root is **org-portable** — a developer can take everything except `__docs__/` and deploy it directly to a Salesforce org. The `__docs__/` subfolder isolates Storybook-specific files so they don't interfere with `sf deploy` or metadata builds.
 
 Other module namespaces:
 - `shell/` — App chrome (header, nav, theme switcher)

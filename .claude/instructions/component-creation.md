@@ -130,7 +130,18 @@ These files are the source of truth for concrete values. Do not guess spacing, r
 
 ### 2. Create component files
 
-Create the folder `src/modules/c/<camelCaseName>/` with these files:
+Create the folder `src/modules/c/<camelCaseName>/` with this structure:
+
+```
+src/modules/c/<camelCaseName>/
+├── <camelCaseName>.js
+├── <camelCaseName>.html
+├── <camelCaseName>.css
+├── <camelCaseName>.js-meta.xml
+└── __docs__/
+    ├── <camelCaseName>.stories.js
+    └── <camelCaseName>.mdx
+```
 
 **`<camelCaseName>.js`**
 ```js
@@ -156,7 +167,22 @@ export default class MyButton extends LightningElement {
 }
 ```
 
-**`<camelCaseName>.stories.js`**
+**`<camelCaseName>.js-meta.xml`** (Salesforce org deployment metadata)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+</LightningComponentBundle>
+```
+
+**`__docs__/<camelCaseName>.stories.js`**
 
 **IMPORTANT:** Do NOT include `tags: ['autodocs']` — the MDX file provides the docs page.
 
@@ -185,7 +211,7 @@ export const Default = {
 };
 ```
 
-**`<camelCaseName>.mdx`** (Documentation — ALWAYS created)
+**`__docs__/<camelCaseName>.mdx`** (Documentation — ALWAYS created)
 
 **IMPORTANT: Tables in MDX must use HTML `<table>` markup, NOT markdown table syntax.**
 
@@ -269,7 +295,7 @@ Showcase representative props/variants so the user sees the component in a meani
 > ┌─────────────────────────────────────────────────────┐
 > │  🎨 CREATING YOUR COMPONENT                         │
 > │                                                     │
-> │  I'm about to create 5 new files for your           │
+> │  I'm about to create 6 new files for your           │
 > │  component. I'll ask permission before writing       │
 > │  each one — just accept when prompted.              │
 > │                                                     │
@@ -282,8 +308,9 @@ Showcase representative props/variants so the user sees the component in a meani
 > 1. Logic file (`.js`) — the component's behavior
 > 2. Template file (`.html`) — the visual structure
 > 3. Styles file (`.css`) — spacing and appearance
-> 4. Stories file (`.stories.js`) — the Storybook preview
-> 5. Docs file (`.mdx`) — the documentation page
+> 4. Metadata file (`.js-meta.xml`) — makes it ready for a real Salesforce org
+> 5. Stories file (`__docs__/.stories.js`) — the Storybook preview
+> 6. Docs file (`__docs__/.mdx`) — the documentation page
 >
 > Plus I'll register it in the catalog and add it to the gallery page.
 >
