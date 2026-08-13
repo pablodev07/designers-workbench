@@ -1,6 +1,7 @@
 node_modules/
 dist/
 storybook-static/
+_site/
 .vite/
 src/build/generated/
 public/css/slds-font-tokens.css
