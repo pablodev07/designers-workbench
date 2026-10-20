@@ -1,0 +1,4 @@
+{
+  "buildCommand": "npm run build && npm run build-storybook && cp -r storybook-static dist/storybook",
+  "outputDirectory": "dist"
+}

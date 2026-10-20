@@ -189,15 +189,6 @@ This project extends the official Salesforce [design-system-2-starter-kit](https
 
 The project is deployed to GitHub Pages via a `gh-pages` branch containing pre-built static output. No custom GitHub Actions workflow is used — the org's limited hosted runners cause concurrency deadlocks with custom workflows.
 
-### Live URLs
-
-| Site | URL |
-|------|-----|
-| App Shell | [studious-fiesta-v63ooy5.pages.github.io/](https://studious-fiesta-v63ooy5.pages.github.io/) |
-| Storybook | [studious-fiesta-v63ooy5.pages.github.io/storybook/](https://studious-fiesta-v63ooy5.pages.github.io/storybook/) |
-
-Access is org-internal only (authenticated Salesforce employees).
-
 ### Publishing an update
 
 ```bash

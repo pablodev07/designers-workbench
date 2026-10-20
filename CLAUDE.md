@@ -168,6 +168,9 @@ npm run build-storybook
 
 ## GitHub Pages Hosting — Security Guidelines
 
+> [!WARNING]
+> **Salesforce-specific.** This section documents how the project was hosted while in use inside Salesforce (private GitHub Pages on the `salesforce-ux-emu` EMU org). The policies, internal links, and URLs below apply only to that environment and are kept as historical reference. They are not guidance for hosting this repository elsewhere.
+
 Deploying this project's build output (`npm run build-storybook` or `npm run build`) to **GitHub Pages is safe and explicitly allowed** by Salesforce Enterprise Security policy.
 
 ### Policy Basis
